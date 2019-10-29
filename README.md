@@ -6,6 +6,8 @@ Aula 1  - Prólogo: regras, código e manutenção
 
 Aula 2 - Especificando uma Negociação
 
+Aula 3 - A ligação entre as ações do usuário e o modelo
+
 
 ---
 
@@ -25,3 +27,11 @@ get data() { return new Date(this._data.getTime()); }
 ```
 
 Outro ponto importante é trocar o *var* pelo *let* quando for declarar variáveis, pois *let* permite um escopo de bloco.
+
+---
+## Spread operator
+O spread operator permite que um objeto iterável, como array ou string, seja expandandido em locais onde argumentos sejam esperados. 
+
+```
+new Date(...this._inputData.value.split('-').map((item, indice) =>  item - indice %2));
+```
