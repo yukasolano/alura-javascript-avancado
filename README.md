@@ -8,6 +8,8 @@ Aula 2 - Especificando uma Negociação
 
 Aula 3 - A ligação entre as ações do usuário e o modelo
 
+Aula 4 - Lidar com data é trabalhoso? Chame um ajudante!
+
 
 ---
 
@@ -24,6 +26,10 @@ construtor(data){
 } 
 
 get data() { return new Date(this._data.getTime()); }
+
+get negociacoes(){
+	return [].concat(this._negociacoes);
+}
 ```
 
 Outro ponto importante é trocar o *var* pelo *let* quando for declarar variáveis, pois *let* permite um escopo de bloco.
@@ -34,4 +40,12 @@ O spread operator permite que um objeto iterável, como array ou string, seja ex
 
 ```
 new Date(...this._inputData.value.split('-').map((item, indice) =>  item - indice %2));
+```
+
+---
+##Template strings 
+Strings que permitem expressões.
+
+```
+`${data.getDate()}/${data.getMonth()+1}/${ data.getFullYear()}`
 ```
