@@ -10,6 +10,8 @@ Aula 3 - A ligação entre as ações do usuário e o modelo
 
 Aula 4 - Lidar com data é trabalhoso? Chame um ajudante!
 
+Aula 5 - Temos o modelo, mas e a view?
+
 
 ---
 
@@ -43,9 +45,32 @@ new Date(...this._inputData.value.split('-').map((item, indice) =>  item - indic
 ```
 
 ---
-##Template strings 
+## Template strings 
 Strings que permitem expressões.
 
 ```
 `${data.getDate()}/${data.getMonth()+1}/${ data.getFullYear()}`
+```
+
+---
+
+## Funcional
+
+Uso do mapa:
+
+```
+${model.negociacoes.map((n) => `
+	<tr>
+		<td> ${DateHelper.dataParaTexto(n.data)} </td>
+		<td> ${n.quantidade} </td>
+		<td> ${n.valor} </td>
+		<td> ${n.volume} </td>
+	</tr>
+	
+`).join('')}
+```
+
+Uso do reduce:
+```
+${model.negociacoes.reduce((total, n ) => total + n.volume, 0.0)} 
 ```
