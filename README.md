@@ -12,6 +12,7 @@ Aula 4 - Lidar com data é trabalhoso? Chame um ajudante!
 
 Aula 5 - Temos o modelo, mas e a view?
 
+Aula 6 - Generalizando a solução da nossa View
 
 ---
 
