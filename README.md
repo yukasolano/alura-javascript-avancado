@@ -1,6 +1,8 @@
 # Alura - Javascript Avançado
 
-Projeto do curso Javascript avançado I: ES6, orientação a objeto e padrões de projetos
+Este projeto consiste nos seguintes cursos da Alura:
+
+## Curso Javascript avançado I: ES6, orientação a objeto e padrões de projetos
 
 Aula 1  - Prólogo: regras, código e manutenção
 
@@ -13,6 +15,10 @@ Aula 4 - Lidar com data é trabalhoso? Chame um ajudante!
 Aula 5 - Temos o modelo, mas e a view?
 
 Aula 6 - Generalizando a solução da nossa View
+
+## Curso Javacript avançado II: ES6, orientação a objetos e padrões de projetos
+
+Aula 1 - Como saber quando o modelo mudou?
 
 ---
 
@@ -75,3 +81,9 @@ Uso do reduce:
 ```
 ${model.negociacoes.reduce((total, n ) => total + n.volume, 0.0)} 
 ```
+---
+## this
+
+O this de uma função é dinâmico, isto é, seu valor é determinado no momento em que a função é chamada. Como o this é dinâmico, é possível usar artifícios da linguagem, como a API Reflect, para alterá-lo se assim desejarmos.
+
+O this de uma arrow function é léxico, isto é, seu valor é determinado no local onde a arrow function for definida, ela não cria um novo this. O this de uma arrow function não pode ser alterado, mesmo se usarmos recursos da linguagem, como a API Reflect.
