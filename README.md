@@ -20,6 +20,8 @@ Aula 6 - Generalizando a solução da nossa View
 
 Aula 1 - Como saber quando o modelo mudou?
 
+Aula 2 - Existe modelo mentiroso? O padrão de projeto Proxy!
+
 ---
 
 ## Modelo
@@ -87,3 +89,23 @@ ${model.negociacoes.reduce((total, n ) => total + n.volume, 0.0)}
 O this de uma função é dinâmico, isto é, seu valor é determinado no momento em que a função é chamada. Como o this é dinâmico, é possível usar artifícios da linguagem, como a API Reflect, para alterá-lo se assim desejarmos.
 
 O this de uma arrow function é léxico, isto é, seu valor é determinado no local onde a arrow function for definida, ela não cria um novo this. O this de uma arrow function não pode ser alterado, mesmo se usarmos recursos da linguagem, como a API Reflect.
+
+---
+## Padrão de projeto Proxy
+
+Proxies são do que objetos mentirosos que encapsulam outros. Pense em proxies como "cascas" que envolvem objetos. Dentro desse contexto, só podemos "tocar" os objetos encapsulados passando pelo proxy. É justamente essa característica que torna o uso desse padrão de projeto tão poderoso.
+
+```
+this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
+	get(target, prop, receiver) {
+		if(['adiciona', 'esvazia'].includes(prop) && typeof(target[prop] == typeof(Function))) {
+			return function() {
+				console.log(`interceptando ${prop}`);
+				Reflect.apply(target[prop], target, arguments);
+				self._negociacoesView.update(target);
+			}  
+		}
+		return Reflect.get(target, prop, receiver);
+	}
+});
+```
