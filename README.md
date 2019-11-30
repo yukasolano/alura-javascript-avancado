@@ -22,6 +22,8 @@ Aula 1 - Como saber quando o modelo mudou?
 
 Aula 2 - Existe modelo mentiroso? O padrão de projeto Proxy!
 
+Aula 3 - E se alguém criasse nossos proxies? O Padrão de Projeto Factory
+
 ---
 
 ## Modelo
@@ -53,6 +55,19 @@ O spread operator permite que um objeto iterável, como array ou string, seja ex
 new Date(...this._inputData.value.split('-').map((item, indice) =>  item - indice %2));
 ```
 
+## REST operator
+O REST operator permite passar ma lista de argumentos no lugar de um array para um método.
+```
+constructor(model, view, ...props) {
+	let proxy = ProxyFactory.create(model, props, model => 
+		view.update(model)
+	);
+	view.update(model);
+	return proxy;
+}
+	
+this._listaNegociacoes = new Bind(new ListaNegociacoes(), this._negociacoesView, 'adiciona', 'esvazia');
+```
 ---
 ## Template strings 
 Strings que permitem expressões.
