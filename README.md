@@ -24,6 +24,7 @@ Aula 2 - Existe modelo mentiroso? O padrão de projeto Proxy!
 
 Aula 3 - E se alguém criasse nossos proxies? O Padrão de Projeto Factory
 
+Aula 4 - Importando negociações
 ---
 
 ## Modelo
@@ -123,4 +124,36 @@ this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
 		return Reflect.get(target, prop, receiver);
 	}
 });
+```
+---
+## AJAX
+```
+obterNegociacoesDaSemana(cb) {
+	let xhr = new XMLHttpRequest();
+
+	xhr.open('GET', 'negociacoes/semana');
+
+	xhr.onreadystatechange = () => {
+		if(xhr.readyState == 4) {
+			if(xhr.status == 200) {
+				cb(null, JSON.parse(xhr.responseText)
+				.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
+			} else {
+				console.log(xhr.responseText);
+				cb('Não foi possível obter as negociações');
+			}
+		}
+	};
+	xhr.send();
+}
+
+negociacoService.obterNegociacoesDaSemana((erro, negociacoes) => {
+	if(erro) {
+	   this._mensagem.texto = erro;
+	   return; 
+	}
+
+	negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+	this._mensagem.texto = 'Negociações importadas com sucesso'
+})
 ```
