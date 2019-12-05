@@ -157,3 +157,19 @@ negociacoService.obterNegociacoesDaSemana((erro, negociacoes) => {
 	this._mensagem.texto = 'Negociações importadas com sucesso'
 })
 ```
+
+---
+## Padrão Promise
+
+```
+obterNegociacoesDaSemana() {
+	return new Promise((resolve, reject) => {
+		this._http.get('negociacoes/semana')
+		.then(resp => resolve(resp.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor))))
+		.catch(erro => {
+			console.log(erro);
+			reject('Não foi possível obter as negociações da semana');
+		});
+	});
+}
+```
