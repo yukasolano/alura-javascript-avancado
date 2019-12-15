@@ -25,6 +25,10 @@ Aula 2 - Existe modelo mentiroso? O padrão de projeto Proxy!
 Aula 3 - E se alguém criasse nossos proxies? O Padrão de Projeto Factory
 
 Aula 4 - Importando negociações
+
+Aula 5 - Combatendo Callback Hell com Promises
+
+Aula 6 - Considerações finais e exercícios bônus
 ---
 
 ## Modelo
